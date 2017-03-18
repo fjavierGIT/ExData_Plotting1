@@ -23,15 +23,31 @@ initial$DateTime <- strptime(paste(initial$Date, initial$Time, sep=" "), "%d/%m/
 initial.filter <- initial[initial$DateTime >= "2007/02/01" & initial$DateTime < "2007/02/03",]
 
 #Save to png
-png("./plot3.png", width=480, height=480)
+png("./plot4.png", width=480, height=480)
 
-#Draws plot with desired params
+#Prepare layout
+par(mfrow = c(2, 2)) 
+
+#Draws graph1 with desired params
+with(initial.filter, plot(DateTime, Global_active_power, 
+                          type="l", xlab="", ylab="Global Active Power"))
+
+#Draws graph2 with desired params
 with(initial.filter, 
      plot(DateTime, Sub_metering_1, type = "n",
-     xlab="", ylab="Energy sub metering"))
+          xlab="", ylab="Energy sub metering"))
 with(initial.filter,lines(DateTime, Sub_metering_1, col="black"))
 with(initial.filter,lines(DateTime, Sub_metering_2, col="red"))
 with(initial.filter,lines(DateTime, Sub_metering_3, col="blue"))
-legend("topright", lty = 1, col = c("black","red", "blue"), legend =c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+legend("topright", col = c("black","red", "blue"), lty = 1, cex= 0.9,
+       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), bty="n")
+
+#Draws graph3 with desired params
+with(initial.filter, plot(DateTime, Voltage, 
+                          type="l", xlab="datetime", ylab="Voltage"))
+
+#Draws graph4 with desired params
+with(initial.filter, plot(DateTime, Global_reactive_power, 
+                          type="l", xlab="datetime"))
 
 dev.off()    #close device!

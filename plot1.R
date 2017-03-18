@@ -22,6 +22,9 @@ initial$DateTime <- strptime(paste(initial$Date, initial$Time, sep=" "), "%d/%m/
 #We will only be using data from the dates 2007-02-01 and 2007-02-02
 initial.filter <- initial[initial$DateTime >= "2007/02/01" & initial$DateTime < "2007/02/03",]
 
+#Save to png
+png("./plot1.png", width=480, height=480)
+
 #Draws histogram with desired params
 with(initial.filter, 
           hist(Global_active_power,
@@ -29,6 +32,5 @@ with(initial.filter,
           main = "Global Active Power",
           xlab = "Global Active Power (kilowatts)"))
 
-#Save to png. Defaults (480 x 480) are ok
-dev.copy(png, file = "./plot1.png", width = 480, height=480)
-dev.off(4)    #close device!
+dev.off()    #close device!
+
