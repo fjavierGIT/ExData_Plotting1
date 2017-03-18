@@ -14,6 +14,7 @@ unzip("./assignDataset.zip", exdir = ".")
 #149418648 / 2^20 = 142,49 MB memory required
 initial <- read.table("./household_power_consumption.txt", header = TRUE, 
                       sep = ";",na.strings = "?", colClasses = c("character", "character",rep("numeric",7)))
+#Adds a column for Date+Time data
 initial[,"DateTime"] <- NA
 initial$DateTime <- strptime(paste(initial$Date, initial$Time, sep=" "), "%d/%m/%Y %H:%M:%S")
 
