@@ -29,7 +29,7 @@ with(initial.filter,
 with(initial.filter,lines(DateTime, Sub_metering_1, col="black"))
 with(initial.filter,lines(DateTime, Sub_metering_2, col="red"))
 with(initial.filter,lines(DateTime, Sub_metering_3, col="blue"))
-legend("topright", pch = 1, col = c("black","blue", "red"), legend =c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+legend("topright", lty = 1, col = c("black","red", "blue"), legend =c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
          
 #Save to png. Defaults (480 x 480) are ok
 dev.copy(png, file = "./plot3.png", width = 480, height=480)
