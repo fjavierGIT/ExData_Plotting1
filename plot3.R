@@ -22,7 +22,7 @@ initial$DateTime <- strptime(paste(initial$Date, initial$Time, sep=" "), "%d/%m/
 #We will only be using data from the dates 2007-02-01 and 2007-02-02
 initial.filter <- initial[initial$DateTime >= "2007/02/01" & initial$DateTime < "2007/02/03",]
 
-#Draws histogram with desired params
+#Draws plot with desired params
 with(initial.filter, 
      plot(DateTime, Sub_metering_1, type = "n",
      xlab="", ylab="Energy sub metering"))
